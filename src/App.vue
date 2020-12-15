@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <button @click="send"></button>
+    <button class="btn btn-success" @click="send"> Send Form</button>
    <input type="text" v-model="form.first_name">
    <input type="text" v-model="form.last_name">
     {{fullName}}
@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
