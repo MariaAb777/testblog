@@ -1,68 +1,12 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <button class="btn btn-success" @click="send"> Send Form</button>
-   <input type="text" v-model="form.first_name">
-   <input type="text" v-model="form.last_name">
-    {{fullName}}
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/login">Login</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-
-  data(){
-    return {
-      counter:0,
-      form:{
-        first_name:'Maria',
-        last_name: 'Abrahamyan'
-      }
-    }
-  },
-  computed:{
-    fullName (){
-      return `${this.form.first_name} ${this.form.last_name}`
-    }
-  },
-  methods:{
-    send(){
-      console.log(this.form)
-    },
-    increment(){
-      this.counter++
-    }
-  },
-  watch:{
-  },
-  beforeCreate() {
-    console.log('BEFORE CREATED')
-  },
-  created() {
-    console.log(' CREATED')
-
-  },
-  beforeMount() {
-    console.log('BEFORE Mounted')
-  },
-
-  mounted(){
-    console.log('Mounted')
-
-  },
-  beforeDestroy() {
-    console.log('BEFORE Destroyed')
-
-  },
-  destroyed() {
-    console.log('Destroyed')
-
-  },
-}
-</script>
 
 <style>
 #app {
@@ -71,6 +15,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 1024px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
