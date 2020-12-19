@@ -1,10 +1,12 @@
 import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import App from './App.vue'
 import BootstrapVue from "bootstrap-vue"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import router from './router'
-
+Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
