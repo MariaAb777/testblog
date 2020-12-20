@@ -2,16 +2,7 @@
     <div class="fxt-template-animation fxt-template-layout1 loaded">
         <div class="left_background">
             <div class="left_background_block">
-                <div class="nav">
-
-                    <div class="logo"></div>
-                    <div class="login_register_link">
-                        <router-link class="login" to="/"> Log In</router-link>
-                        |
-                        <router-link class="register" to="/register">Register</router-link>
-
-                    </div>
-                </div>
+                <auth-header></auth-header>
                 <div class="login_context">
                     <div class="login-header">
                         <p class="login_title">Log In</p>
@@ -70,23 +61,20 @@
                     </form>
                 </div>
             </div>
-            <div class="iconsPack">
-                    <i class="facebook-icon fab fa-facebook"></i>
-                    <i class="twitter-icon fab fa-twitter"></i>
-                    <i class="google-icon fab fa-google-plus"></i>
-                    <i class="linkedin-icon fab fa-linkedin-in"></i>
-                    <i class="pinterest-icon fab fa-pinterest"></i>
-            </div>
+            <socialite></socialite>
         </div>
         <div class="right_background"></div>
     </div>
 </template>
 
 <script>
-  import axios from 'axios'
+  // import axios from 'axios'
+  import Socialite from '../components/Socialite'
+  import AuthHeader from '../components/AuthHeader'
 
   export default {
     name: 'Login',
+    components: { Socialite, AuthHeader },
     data () {
       return {
         form: {
@@ -100,16 +88,20 @@
     methods: {
       login () {
         if (this.validateEmail() && this.validatePassword()) {
-          axios.post('', this.form).then((response) => {
-            if (response.data.status) {
-              alert('U are logged in')
-              this.$router.push('/register')
-            } else {
-              this.emailError = true
-              this.passwordError = true
-              alert('U are not  logged in')
-            }
-          })
+          localStorage.setItem('user', JSON.stringify(this.form))
+          this.$router.push({ name: 'Home' })
+
+          // axios.post('', this.form).then((response) => {
+          //   if (response.data.status) {
+          //     localStorage.setItem('user', JSON.stringify(this.form))
+          //     alert('U are logged in')
+          //     this.$router.push('/register')
+          //   } else {
+          //     this.emailError = true
+          //     this.passwordError = true
+          //     alert('U are not  logged in')
+          //   }
+          // })
         }
       },
       validatePassword () {
@@ -145,52 +137,15 @@
         display: flex;
         background-repeat: no-repeat;
 
-        .iconsBlock{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         .left_background {
             height: 100%;
             width: 100%;
+            padding-top: 50px;
 
             .left_background_block {
                 padding-left: 50px;
 
-                .nav {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding-right: 150px;
 
-                    .login {
-                        font-size: 20px;
-                        color: $activeColor;
-                    }
-
-                    .register {
-                        font-size: 20px;
-                        color: $textColor;
-                        cursor: pointer;
-                    }
-
-                    .logo {
-                        background-image: url('/images/logo.png');
-                        height: 30px;
-                        width: 200px;
-                        background-repeat: no-repeat;
-                        margin-left: 100px;
-
-                        .login_register_link {
-                            width: 200px;
-                            display: flex;
-                            justify-content: space-between;
-                            margin-right: 150px;
-                            margin-top: 99px;
-                        }
-                    }
-                }
             }
 
             .login_context {
@@ -236,6 +191,8 @@
                         border-top: none;
                         border-left: none;
                         border-right: none;
+                        margin-bottom: 20px;
+                        margin-top: 25px;
 
                         &-icon {
                             position: absolute;
@@ -279,125 +236,44 @@
                     }
                 }
 
+                .custom-btnDiv {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 30px;
 
-            }
-        }
+                    .custom-btn {
+                        background-color: $activeColor;
+                        color: #ffffff;
+                        border: none;
+                        height: 50px;
+                        width: 120px;
+                        border-radius: 5px;
+                        font-weight: bold;
+                    }
 
-        .email-input {
-            margin-bottom: 20px;
-            margin-top: 25px;;
-        }
-
-        .custom-btnDiv {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 30px;
-        }
-
-        .custom-btn {
-            background-color: $activeColor;
-            color: #ffffff;
-            border: none;
-            height: 50px;
-            width: 120px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .custom-btn:hover {
-            background-color: $activeColor;
-            transition: 1s;
-        }
-
-        .custom-pass {
-            margin-top: 15px;
-            color: lightslategrey;
-            font-size: 15px;
-        }
-
-        .custom-pass:hover {
-            transition: 1s;
-            color: #505050;
-            text-decoration: none;
-        }
-
-        .iconsPack {
-            list-style-type: none;
-            width: 30%;
-            display: flex;
-            margin-left: 250px;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 50px;
-
-
-            .facebook-icon {
-                color: #3B5998;
-                font-size: 40px;
-                &:hover {
-                    border-radius: 50%;
-                    color: #6d82af;
-                    transition: color 1s
+                    .custom-btn:hover {
+                        background-color: $activeColor;
+                        transition: 1s;
+                    }
                 }
-            }
 
-
-            .twitter-icon {
-                color: #00ACEE;
-                font-size: 40px;
-                &:hover {
-                    border: 1px solid #00ACEE;
-                    border-radius: 140px;
-                    font-size: 40px;
-                    color: #fff;
-                    transition: 5s;
-
+                .custom-pass {
+                    margin-top: 15px;
+                    color: lightslategrey;
+                    font-size: 15px;
                 }
-            }
 
-
-
-            .google-icon {
-                color: #CC3333;
-                font-size: 40px;
-
-                &:hover {
-                    border: 1px solid #CC3333;
-                    border-radius: 140px;
-                    font-size: 40px;
-                    color: #fff;
-                    transition: 5s;
+                .custom-pass:hover {
+                    transition: 1s;
+                    color: #505050;
+                    text-decoration: none;
                 }
+
             }
-
-
-            .linkedin-icon {
-                color: #0077B5;
-                font-size: 40px;
-                &:hover {
-                    border: 1px solid #0077B5;
-                    border-radius: 140px;
-                    font-size: 40px;
-                    color: #fff;
-                    transition: 5s;
-                }
-            }
-
-
-            .pinterest-icon {
-                color: #BD081C;
-                font-size: 40px;
-                &:hover {
-                    border: 1px solid #BD081C;
-                    border-radius: 140px;
-                    font-size: 40px;
-                    color: #fff;
-                    transition: 5s;
-                }
-            }
-
 
         }
+
+
     }
 
     .right_background {
