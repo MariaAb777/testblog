@@ -8,12 +8,20 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 import router from './router'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
+
 new Vue({
+  created () {
+    AOS.init()
+  },
   router,
   render: h => h(App)
 }).$mount('#app')
