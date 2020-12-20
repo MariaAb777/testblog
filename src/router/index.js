@@ -13,16 +13,18 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/home',
-    name: 'Home',
     component: Home,
     meta: {
       middleware: [auth],
     },
     children:[
       {
-        path: '/dashboard',
+        path: '/',
         name: 'Dashboard',
         component: Dashboard,
+        meta: {
+          middleware: [auth],
+        },
       },
     ]
 

@@ -1,13 +1,12 @@
 <template>
- <div>
+ <div class="login">
    <MobileMenu></MobileMenu>
    <div class="flex">
      <side-nav></side-nav>
      <div class="content">
       <top-bar></top-bar>
-    <router-view></router-view>
+        <router-view></router-view>
      </div>
-
    </div>
  </div>
 </template>

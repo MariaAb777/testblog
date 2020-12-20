@@ -8,7 +8,7 @@
     &:before {
         content: "";
         margin-left: -48%;
-        background-image: url(../images/bg-login-page.svg);
+        background-image: url(/images/bg-login-page.svg);
         background-repeat: no-repeat;
         background-size: auto 100%;
         background-position: right;
@@ -30,7 +30,7 @@
     .login {
         @apply bg-dark-1;
         &:before {
-            background-image: url(../images/bg-login-page-dark.svg);
+            background-image: url(/images/bg-login-page-dark.svg);
         }
     }
 }
