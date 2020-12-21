@@ -33,8 +33,14 @@
                         </div>
                         <div class="intro-x mt-8">
                             <input class="intro-x login__input input input--lg border border-gray-300 block" placeholder="Email"
+                                   :class="{'border-red-300':emailError}"
+                                   v-model="form.email"
+                                   required="required"
                                    type="text">
                             <input class="intro-x login__input input input--lg border border-gray-300 block mt-4"
+                                   :class="{'border-red-300':emailPassword}"
+                                   v-model="form.password"
+                                   required="required"
                                    placeholder="Password"
                                    type="password">
                         </div>
@@ -46,7 +52,11 @@
                             <a href="">Forgot Password?</a>
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top">
+                            <button class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top"
+                                  @click.prevent="Login"
+                                  type="submit"
+                                           >
+                                
                                 Login
                             </button>
                             <button class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top">
