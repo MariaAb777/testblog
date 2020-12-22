@@ -32,17 +32,18 @@
                             your account. Manage all your e-commerce accounts in one place
                         </div>
                         <div class="intro-x mt-8">
-                            <input class="intro-x login__input input input--lg border border-gray-300 block" placeholder="Email"
-                                   :class="{'border-red-300':emailError}"
-                                   v-model="form.email"
+                            <input :class="{'border-red-300':emailError}"
+                                   class="intro-x login__input input input--lg border border-gray-300 block"
+                                   placeholder="Email"
                                    required="required"
-                                   type="text">
-                            <input class="intro-x login__input input input--lg border border-gray-300 block mt-4"
-                                   :class="{'border-red-300':emailPassword}"
-                                   v-model="form.password"
-                                   required="required"
+                                   type="text"
+                                   v-model="form.email">
+                            <input :class="{'border-red-300':emailError}"
+                                   class="intro-x login__input input input--lg border border-gray-300 block mt-4"
                                    placeholder="Password"
-                                   type="password">
+                                   required="required"
+                                   type="password"
+                                   v-model="form.password">
                         </div>
                         <div class="intro-x flex text-gray-700 dark:text-gray-600 text-xs sm:text-sm mt-4">
                             <div class="flex items-center mr-auto">
@@ -52,16 +53,14 @@
                             <a href="">Forgot Password?</a>
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top"
-                                  @click.prevent="Login"
-                                  type="submit"
-                                           >
-                                
+                            <button @click.prevent="login"
+                                    class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top"
+                                    type="submit">
                                 Login
                             </button>
-                            <button class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top">
+                            <router-link to="/register"  class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top">
                                 Sign up
-                            </button>
+                            </router-link>
                         </div>
                         <div class="intro-x mt-10 xl:mt-24 text-gray-700 dark:text-gray-600 text-center xl:text-left">
                             By signin up, you agree to our

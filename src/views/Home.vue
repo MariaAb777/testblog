@@ -1,5 +1,5 @@
 <template>
- <div class="login">
+ <div class="app">
    <MobileMenu></MobileMenu>
    <div class="flex">
      <side-nav></side-nav>

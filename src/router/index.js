@@ -4,9 +4,9 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register'
 import Home from '../views/Home'
 
-import auth from '../middleware/auth'
-import logged from '../middleware/logged'
 import Dashboard from '../views/dashboard/Dashboard'
+import Users from '../views/dashboard/Users'
+import User from '../views/dashboard/User'
 
 Vue.use(VueRouter)
 
@@ -14,17 +14,21 @@ const routes = [
   {
     path: '/home',
     component: Home,
-    meta: {
-      middleware: [auth],
-    },
     children:[
       {
         path: '/',
         name: 'Dashboard',
         component: Dashboard,
-        meta: {
-          middleware: [auth],
-        },
+      },
+      {
+        path: '/users',
+        name: 'Users',
+        component: Users,
+      },
+      {
+        path: '/users/:id',
+        name: 'UserProfile',
+        component: User,
       },
     ]
 
@@ -34,17 +38,13 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login,
-    meta: {
-      middleware: [logged],
-    },
+
   },
   {
     path: '/register',
     name: 'Register',
     component: Register,
-    meta: {
-      middleware: [logged],
-    },
+
   },
 ]
 
