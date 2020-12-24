@@ -5,9 +5,10 @@ import Register from '../views/Register'
 import Home from '../views/Home'
 
 import Dashboard from '../views/dashboard/Dashboard'
-import Users from '../views/dashboard/Users'
-import User from '../views/dashboard/User'
-import ForgotPass from '../views/ForgotPass.vue'
+import Users from '../views/dashboard/user/Users'
+import User from '../views/dashboard/user/User'
+import ForgotPassword from '../views/ForgotPassword'
+import UserCreate from '../views/dashboard/user/UserCreate'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [{
         path: '/users',
         name: 'Users',
         component: Users,
+      },
+      {
+        path: '/user-create',
+        name: 'UserCreate',
+        component: UserCreate,
       },
       {
         path: '/users/:id',
@@ -46,9 +52,9 @@ const routes = [{
 
   },
   {
-    path: '/forgotpass',
-    name: 'ForgotPass',
-    component: ForgotPass,
+    path: '/forgot-password',
+    name: 'ForgotPassword',
+    component: ForgotPassword,
 
   },
 ]

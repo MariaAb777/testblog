@@ -1,5 +1,5 @@
 <template>
-    <div class="login ">
+    <div class="login">
         <div class="container sm:px-10">
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
@@ -26,7 +26,7 @@
                 <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
                     <div class="my-auto mx-auto xl:ml-20 bg-white xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
                         <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                            Send Email 
+                            Send Email
                         </h2>
                         <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in to
                             your account. Manage all your e-commerce accounts in one place
@@ -38,17 +38,18 @@
                                    required="required"
                                    type="text"
                                    v-model="form.email">
-                         
+
                         </div>
-                    
+
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                             <button @click.prevent="login"
                                     class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top"
                                     type="submit">
                                 Send
                             </button>
-                            <button @click="goTo"  class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-8 xl:mt-0 align-top">
-                               Go Back
+                            <button @click="goTo"
+                                    class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-8 xl:mt-0 align-top">
+                                Go Back
                             </button>
                         </div>
                         <div class="intro-x mt-10 xl:mt-24 text-gray-700 dark:text-gray-600 text-center xl:text-left">
@@ -66,46 +67,22 @@
 </template>
 
 <script>
-  // import axios from 'axios'
-  // import Socialite from '../components/Socialite'
-  // import AuthHeader from '../components/AuthHeader'
-
   export default {
-    name: 'ForgotPass',
-    // components: { Socialite, AuthHeader },
+    name: 'ForgotPassword',
     data () {
       return {
         form: {
           email: '',
-          
+
         },
         emailError: false,
-        
+
       }
     },
     methods: {
-        goTo(){
-            this.$router.push('/')
-        },
-      login () {
-        if (this.validateEmail()) {
-          localStorage.setItem('user', JSON.stringify(this.form))
-          this.$router.push({ name: 'Login'})
-
-          // axios.post('', this.form).then((response) => {
-          //   if (response.data.status) {
-          //     localStorage.setItem('user', JSON.stringify(this.form))
-          //     alert('U are logged in')
-          //     this.$router.push('/register')
-          //   } else {
-          //     this.emailError = true
-          //     this.passwordError = true
-          //     alert('U are not  logged in')
-          //   }
-          // })
-        }
+      goTo () {
+        this.$router.push('/')
       },
-  
       validateEmail () {
         if (
           this.form.email === '' ||
@@ -138,8 +115,6 @@
 
             .left_background_block {
                 padding-left: 50px;
-
-
             }
 
             .login_context {
@@ -156,7 +131,6 @@
                         font-size: 27px;
                         font-weight: bold;
                         color: $textColor;
-
                         cursor: pointer;
                     }
 
@@ -222,7 +196,6 @@
                         &:focus {
                             color: #495057;
                             background-color: #fff;
-
                             border-bottom: 1px solid #80bdff !important;
                             outline: 0;
                             box-shadow: 0 4px 2px -2px rgba(0, 123, 255, .25);
@@ -262,19 +235,14 @@
                     color: #505050;
                     text-decoration: none;
                 }
-
             }
-
         }
-
-
     }
 
     .right_background {
         height: 100%;
         width: 100%;
-        background-image: url(/images/bg.jpg);
-
+        background-image: url('/images/bg.jpg');
     }
 
 

@@ -5,7 +5,7 @@
         </h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
-                <button class="button text-white bg-theme-1 shadow-md mr-2">Add New User</button>
+                <button class="button text-white bg-theme-1 shadow-md mr-2" @click="goto('user-create')">Add New User</button>
                 <div class="dropdown">
                     <button class="dropdown-toggle button px-2 box text-gray-700 dark:text-gray-300">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4"
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import user from "../../components/dashboard/User"
+    import user from "../../../components/dashboard/User"
   export default {
     name: 'Users',
     components:{user},
@@ -48,6 +48,11 @@
     computed:{
       getUsers(){
         return this.users
+      }
+    },
+    methods:{
+      goto(path){
+        this.$router.push(path);
       }
     },
     created () {

@@ -50,7 +50,7 @@
                                 <input class="input border mr-2" id="remember-me" type="checkbox">
                                 <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                             </div>
-                            <a @click="goTo('forgotpass')" href="">Forgot Password?</a>
+                            <a @click="goTo('forgot-password')" href="">Forgot Password?</a>
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                             <button @click.prevent="login"
