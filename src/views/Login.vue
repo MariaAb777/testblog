@@ -50,7 +50,7 @@
                                 <input class="input border mr-2" id="remember-me" type="checkbox">
                                 <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                             </div>
-                            <a href="">Forgot Password?</a>
+                            <a @click="goTo('forgotpass')" href="">Forgot Password?</a>
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                             <button @click.prevent="login"
@@ -58,7 +58,7 @@
                                     type="submit">
                                 Login
                             </button>
-                            <button @click="goto"  class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-8 xl:mt-0 align-top">
+                            <button @click="goTo('register')"  class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-8 xl:mt-0 align-top">
                                 Sign up
                             </button>
                         </div>
@@ -95,8 +95,8 @@
       }
     },
     methods: {
-        goto(){
-            this.$router.push('/register')
+        goTo(path){
+            this.$router.push(path)
         },
       login () {
         if (this.validateEmail() && this.validatePassword()) {

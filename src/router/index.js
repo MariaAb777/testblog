@@ -7,15 +7,14 @@ import Home from '../views/Home'
 import Dashboard from '../views/dashboard/Dashboard'
 import Users from '../views/dashboard/Users'
 import User from '../views/dashboard/User'
+import ForgotPass from '../views/ForgotPass.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/home',
     component: Home,
-    children:[
-      {
+    children: [{
         path: '/',
         name: 'Dashboard',
         component: Dashboard,
@@ -46,6 +45,12 @@ const routes = [
     component: Register,
 
   },
+  {
+    path: '/forgotpass',
+    name: 'ForgotPass',
+    component: ForgotPass,
+
+  },
 ]
 
 const router = new VueRouter({
@@ -55,7 +60,7 @@ const router = new VueRouter({
 })
 
 
-function nextFactory (context, middleware, index) {
+function nextFactory(context, middleware, index) {
   const subsequentMiddleware = middleware[index]
 
   if (!subsequentMiddleware) return context.next
@@ -65,15 +70,17 @@ function nextFactory (context, middleware, index) {
     context.next(...parameters)
 
     const nextMiddleware = nextFactory(context, middleware, index + 1)
-    subsequentMiddleware({ ...context, next: nextMiddleware })
+    subsequentMiddleware({
+      ...context,
+      next: nextMiddleware
+    })
   }
 }
 
 router.beforeEach((to, from, next) => {
   if (to.meta.middleware) {
-    const middleware = Array.isArray(to.meta.middleware)
-      ? to.meta.middleware
-      : [to.meta.middleware]
+    const middleware = Array.isArray(to.meta.middleware) ?
+      to.meta.middleware : [to.meta.middleware]
 
     const context = {
       from,
@@ -83,7 +90,10 @@ router.beforeEach((to, from, next) => {
     }
     const nextMiddleware = nextFactory(context, middleware, 1)
 
-    return middleware[0]({ ...context, next: nextMiddleware })
+    return middleware[0]({
+      ...context,
+      next: nextMiddleware
+    })
   }
 
   return next()
