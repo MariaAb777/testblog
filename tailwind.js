@@ -111,9 +111,11 @@ module.exports = {
         'lg': '1024px',
         'xl': '1250px',
         'xxl': '1980px'
+      },
+      width: {
+        '1/7': '14.2857143%',
       }
     }
   },
-  plugins: [
-  ]
+  plugins: []
 }
