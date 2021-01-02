@@ -1,10 +1,11 @@
 <template>
-    <div class="intro-y col-span-12 md:col-span-6">
+    <div class="intro-y col-span-12 md:col-span-6 relative">
+        <button class="absolute top-1 right-1 text-red-500 w-4 h-4 z-10 hover:text-red-900" @click="removeUser(user)">X</button>
         <div class="box">
             <div class="flex flex-col lg:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                 <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
                     <img alt="Midone Tailwind HTML Admin Template" class="rounded-full"
-                         :src="user.image">
+                         :src="user.avatar">
                 </div>
                 <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
                     <a class="font-medium" href="">{{user.name}}</a>
@@ -44,7 +45,12 @@
 <script>
   export default {
     name: 'User',
-    props:['user']
+    props:['user'],
+    methods:{
+      removeUser(user){
+        this.$emit('removeUser',user)
+      }
+    }
 
   }
 </script>

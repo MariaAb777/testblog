@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <user v-for="(user,index) in getUsers" :key="index" :user="user"></user>
+            <user v-for="(user,index) in getUsers" :key="index" :user="user" @removeUser="removeUser"></user>
         </div>
     </div>
 </template>
@@ -51,6 +51,13 @@
       }
     },
     methods:{
+      removeUser(user){
+        this.users = this.users.filter(item=>{
+            return item.id !== user.id
+        })
+        window.localStorage.setItem('users', JSON.stringify(this.users))
+
+      },
       goto(path){
         this.$router.push(path);
       }
